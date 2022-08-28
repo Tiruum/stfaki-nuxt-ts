@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "first_name": "Тимур",
+        "last_name": "Селин",
+        "email": "selin.ta@phystech.edu",
+        "password": "12345",
+        "balance": 1000,
+        "status": "admin",
+        "image": "imagesrc"
+    }
+]
