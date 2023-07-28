@@ -78,15 +78,15 @@ export default {
             }
         },
         addEntry(entry: LaundryEntry) {
-            if (this.$auth.loggedIn) {
+            if (true) {// (this.$auth.loggedIn) {
                 const newId = this.selectedDate + '_' + this.numberToTime(entry.w) + '_' + entry.h;
                 this.laundryStore.fill(this.selectedDate)
                 const arr = this.laundryStore.entriesByDay.map(x => x.id)
                 if (!(arr.find((i) => i === newId))) {
                     this.laundryStore.addEntry({
                         id: newId,
-                        userId: this.userStore.currentUser.id,
-                        username: this.$auth.user.given_name + ' ' + this.$auth.user.family_name,
+                        userId: '1', // this.userStore.currentUser.id,
+                        username: 'User Name', // this.$auth.user.given_name + ' ' + this.$auth.user.family_name,
                         time: entry.w,
                         wmn: entry.h,
                         status: "active",
@@ -116,8 +116,8 @@ export default {
             }
         },
         deleteEntry(entry: LaundryEntry) {
-            if (this.$auth.loggedIn) {
-                if (this.userStore.currentUser.id === entry.userId) {
+            if (true) { // (this.$auth.loggedIn) {
+                if ('1' === entry.userId) {// (this.userStore.currentUser.id === entry.userId) {
                     if (confirm('Вы уверены, что хотите удалить запись?')) {
                         
                         if (new Date(entry.date.split('.').reverse().join('-') + ' ' + this.numberToTime(entry.time).split(' - ')[0]) > new Date()) {

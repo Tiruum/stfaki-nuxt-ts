@@ -2,7 +2,6 @@
 import DasrLogo from '@/components/DasrLogo.vue';
 import { useUserStore } from '~/stores/UserStore';
 import { useLaundryStore } from '~/stores/LaundryStore';
-import { log } from 'console';
 
 
 </script>
@@ -31,9 +30,9 @@ import { log } from 'console';
                             <span class="text-sm text-gray-500 dark:text-gray-400">Баланс: {{balance}}₽</span>
                         </span>
                     </span>
-                    <span @click="loginWithGoogle()" v-else class="items-center flex p-2 text-base font-semibold text-gray-900 dark:text-white cursor-pointer">
-                        <div class="aspect-square h-6 rounded-full bg-white overflow-hidden"></div>
-                        <span class="ml-3 hidden lg:block">Войти</span>
+                    <span v-else class="items-center flex p-2 text-base font-semibold text-gray-900 dark:text-white cursor-pointer">
+                            <div class="aspect-square h-6 rounded-full bg-white overflow-hidden"></div>
+                            <NuxtLink to="/auth"><span class="ml-3 hidden lg:block">Войти</span></NuxtLink>
                     </span>
                 </li>
                 <li>
@@ -159,11 +158,6 @@ export default {
         }
     },
     methods: {
-        loginWithGoogle() {
-            this.$auth.loginWith("google", { params: { prompt: "select_account" } });
-            // this.$auth.loginWith("yandex");
-            // this.$axios.$get("https://oauth.yandex.ru/authorize?response_type=token&client_id=5230ad75d7624818a97070c9910d409d&redirect_uri=http://localhost:3000/login", {headers: {"Access-Control-Allow-Origin": "*"}})
-        }
     },
     mounted() {
         if (this.$auth.loggedIn) {

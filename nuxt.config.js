@@ -49,33 +49,36 @@ export default defineNuxtConfig({
 
   auth: {
     strategies: {
-      google: {
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        scope: ['profile', 'email'],
-        codeChallengeMethod: '',
-        responseType: 'token id_token',
-      },
-      yandex: {
-        scheme: '~/schemes/yandex',
-        clientId: "5230ad75d7624818a97070c9910d409d",
-        clientSecret: "f2e803e14a90439d9126096811c989d7",
-        endpoints: {
-          login: { url: 'https://oauth.yandex.ru/authorize?response_type=token&client_id=5230ad75d7624818a97070c9910d409d&redirect_uri=http://localhost:3000/login', method: 'get', propertyName: 'access_token' },
-          logout: {},
-          user: { url: 'http://oauth.yandex.ru', method: 'post', propertyName: 'oauth_token' }
-        }
-      },
+      // google: {
+      //   clientId: process.env.GOOGLE_CLIENT_ID,
+      //   scope: ['profile', 'email'],
+      //   codeChallengeMethod: '',
+      //   responseType: 'token id_token',
+      // },
       local: {
         endpoints: {
-          login: { url: 'https://oauth.yandex.ru/authorize?response_type=token&client_id=5230ad75d7624818a97070c9910d409d&redirect_uri=http://localhost:3000/login', method: 'get', propertyName: 'access_token' },
-          get_token: { url: 'http://oauth.yandex.ru', method: 'post', propertyName: 'oauth_token' },
-          user: { url: '/api/users/user', method: 'get', propertyName: 'data.attributes' }
+          login: {
+            url: '/auth/login',
+            method: 'post',
+            propertyName: false
+          },
+          logout: { 
+            url: '/auth/logout', 
+            method: 'post' 
+          },
+          user: { 
+            url: '/auth/profile', 
+            method: 'get', 
+            propertyName: false 
+          }
         },
+        tokenRequired: false,
+        tokenType: false
       },
-      discord: {
-        clientId: '1006560952239534133',
-        clientSecret: 'y9K0lxHF29hMC9EChGmhSGm056DpP4Z0'
-      },
+      // discord: {
+      //   clientId: '1006560952239534133',
+      //   clientSecret: 'y9K0lxHF29hMC9EChGmhSGm056DpP4Z0'
+      // },
     }
   },
 

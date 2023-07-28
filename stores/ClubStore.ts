@@ -22,7 +22,7 @@ export const useClubStore = defineStore('ClubStore', {
   },
   actions: {
     async fill(start_date?: string, how_long?: number) {
-      // this.entries = (await import("@/assets/json/entries.json")).default
+      this.entries = (await import("@/assets/json/entries.json")).default
       if (start_date && how_long) { // Если определен интервал
         // const dayInterval = (Number(new Date(end_date)) - Number(new Date(start_date)))/(1000*60*60*24);
         const dayInterval = how_long
